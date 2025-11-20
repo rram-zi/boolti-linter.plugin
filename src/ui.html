@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        /* --- 기본 및 전역 스타일 --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            font-size: 14px;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            background: none;
+            padding: 0;
+        }
+
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* --- 초기 화면 --- */
+        .initial-screen .info-box {
+            background: #FFFFFF;
+            border: 1px solid #D8DBE5;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .initial-screen .info-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #282B33;
+            margin-bottom: 8px;
+        }
+
+        .initial-screen .info-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #595D6D;
+            line-height: 1.6;
+        }
+
+        .initial-screen .start-btn {
+            width: 100%;
+            height: 48px;
+            background: #282B33;
+            color: white;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* --- 결과 화면 --- */
+        .results-screen {
+            background-color: #FFFFFF;
+        }
+
+        .results-screen .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 0px solid #D8DBE5;
+        }
+
+        .results-screen .header-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #282B33;
+        }
+
+        .results-screen .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .results-screen .header-button {
+            font-size: 14px;
+            font-weight: 500;
+            color: #595D6D;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .results-screen .header-button svg {
+            stroke: #595D6D;
+        }
+
+        .results-screen .separator {
+            width: 1px;
+            height: 12px;
+            background-color: #BEC1CE;
+        }
+
+        .results-screen .content-wrapper {
+            background-color: #ffffff;
+            padding: 8 16 16 16px;
+            height: calc(540px - 53px);
+            overflow-y: auto;
+        }
+
+        .results-screen .group-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #282B33;
+            margin: 0 0 8px 0;
+        }
+
+        .results-screen .card {
+            background: #FFFFFF;
+            border: 1px solid #D8DBE5;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .results-screen .card:last-child {
+            margin-bottom: 0;
+        }
+
+        .results-screen .group+.group {
+            margin-top: 24px;
+        }
+
+        .results-screen .text-box-label {
+            font-size: 13px;
+            font-weight: 400;
+            color: #868E96;
+            margin-bottom: 4px;
+        }
+
+        .results-screen .text-content {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #282B33;
+            word-break: break-all;
+            margin-bottom: 16px;
+        }
+
+        .results-screen .text-content-final {
+            margin-bottom: 20px;
+        }
+
+        .results-screen .text-content span {
+            color: #C8CCDC;
+            text-decoration: line-through;
+        }
+
+        .results-screen .text-content .highlight {
+            color: #52C41A;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .results-screen .button-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .results-screen .button {
+            flex: 1;
+            height: 44px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .results-screen .button-secondary {
+            background: #FFFFFF;
+            border: 1px solid #595D6D;
+            color: #282B33;
+        }
+
+        .results-screen .button-primary {
+            background: #282B33;
+            color: #FFFFFF;
+        }
+
+        .results-screen .button:disabled {
+            background: #D8DBE5;
+            color: #A2A5B4;
+            border-color: #D8DBE5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- [핵심 수정] 사라졌던 첫 화면의 HTML 코드를 완벽하게 복원 -->
+    <div id="initial-screen" class="screen active container initial-screen">
+        <div class="info-box">
+            <div class="info-header"><span>🔥</span><span>불티 라이팅 규칙</span></div>
+            <ul class="info-list">
+                <li>모든 문장은 ‘-해요’체를 사용해요.</li>
+                <li>능동 표현을 기본으로 사용하고, 필요 시에만 수동 표현을 사용해요.</li>
+                <li>버튼 텍스트는 ‘-하기’를 기본으로 붙여요.</li>
+                <li>‘티켓팅’ 대신 ‘예매’처럼 통일된 용어를 사용해요.</li>
+            </ul>
+        </div>
+        <button id="start-btn" class="start-btn">라이팅 검사하기</button>
+    </div>
+
+    <!-- 결과 화면은 PO님의 최종 디자인 구조를 그대로 유지 -->
+    <div id="results-screen" class="screen results-screen">
+        <div class="header" id="results-header">
+            <h2 class="header-title" id="results-title"></h2>
+            <div class="header-actions">
+                <button class="header-button" id="apply-all-btn">전체 적용</button>
+                <div class="separator"></div>
+                <button class="header-button" id="recheck-btn">재검사 <svg width="16" height="16" viewBox="0 0 24 24"
+                        fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                        <path d="M16 16h5v5" />
+                    </svg></button>
+            </div>
+        </div>
+        <div class="content-wrapper" id="results-content"></div>
+    </div>
+</body>
+
+</html>
