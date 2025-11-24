@@ -20,9 +20,9 @@ export const PASSIVE_TO_ACTIVE_RULE = {
 } as const;
 
 export const IRREGULAR_VERBS_RULE = {
+    "하시겠습니까?": "할까요?",
     "않습니다": "않아요",
     "좋습니다": "좋아요",
-    "했습니다": "했어요",
     "없습니다": "없어요",
     "입니다": "이에요",
     "합니다": "해요",
@@ -30,6 +30,13 @@ export const IRREGULAR_VERBS_RULE = {
     "습니까?": "까요?",
 } as const;
 
-export const STANDALONE_WORD_EXCEPTIONS = ['나가기', '확인', '안내', '정보', '취소', '닫기', '삭제', '출연진', '공연 정보'];
-export const BUTTON_TEXT_EXCEPTIONS = ['하러가기', '보기', '찾기', '접기', '공유하기', '이전으로', '다음으로', '가기', '바로가기', '문의하기'];
+export const FORMAL_TONE_RULE = {
+    "필수 입력사항이에요": { suggestion: "필수 입력사항입니다", category: "문체 예외 적용" },
+    "복구가 불가능해요": { suggestion: "복구가 불가능합니다", category: "문체 예외 적용" },
+    "취소가 불가해요": { suggestion: "취소가 불가합니다", category: "문체 예외 적용" },
+    "취소돼요": { suggestion: "취소됩니다", category: "문체 예외 적용" },
+} as const;
+
+export const STANDALONE_WORD_EXCEPTIONS = ['확인', '안내', '정보', '취소', '닫기', '삭제', '출연진', '공연 정보', '보내기', '나가기'];
+export const BUTTON_TEXT_EXCEPTIONS = ['하러가기', '보기', '찾기', '접기', '공유하기', '이전으로', '다음으로', '가기', '바로가기', '문의하기', '보내기', '나가기'];
 export const BUTTON_TEXT_RULE = { endsWith: '하기' };

@@ -1,5 +1,3 @@
-// src/ui.ts (재검사 로직 완벽 수정 최종 버전)
-
 window.onload = () => {
     let allErrors: GroupedLinterError[] = [];
     interface LinterErrorDetail { type: string; category: string; suggestion: string; }
@@ -47,7 +45,7 @@ window.onload = () => {
     const startCheck = () => {
         showScreen('results');
         resultsHeader.style.display = 'none';
-        resultsContent.innerHTML = `<p style="padding: 200px 0; text-align: center; color: #868E96;">플러그인을 검사하고 있습니다...</p>`;
+        resultsContent.innerHTML = `<p style="padding: 200px 0; text-align: center; color: #868E96;">라이팅을 검사하고 있습니다...</p>`;
         parent.postMessage({ pluginMessage: { type: 'start-check' } }, '*');
     };
 
@@ -62,7 +60,6 @@ window.onload = () => {
 
         if (allErrors.length === 0) {
             resultsHeader.style.display = 'none';
-            // [핵심 수정 1] 버튼명을 '재검사'로 통일하고, ID를 recheck-btn-bottom으로 변경
             resultsContent.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%;"><div style="margin-bottom: 12px;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="24" fill="#52C41A"/><path d="M32.6668 18.6667L21.3335 30.0001L16.6668 25.3334" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h2 style="font-size: 18px; font-weight: 700; color: #212529; margin: 0 0 4px 0;">완벽해요!</h2><p style="font-size: 14px; color: #868E96; margin: 0 0 24px 0;">모든 라이팅 규칙을 지키고 있어요.</p><button class="header-button" id="recheck-btn-bottom"><span>재검사</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></button></div>`;
             return;
         }
@@ -117,7 +114,6 @@ window.onload = () => {
         const target = event.target as HTMLElement;
         const card = target.closest<HTMLElement>('.card');
 
-        // [핵심 수정 2] '재검사' (완벽해요 화면) 버튼 클릭 시 startCheck() 호출
         if (target.closest('#recheck-btn-bottom')) {
             startCheck();
         }
