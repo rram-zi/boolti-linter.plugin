@@ -31,7 +31,7 @@
 
 ## ⚙️ 설치 방법
 1. 사용할 PC에서 압축 파일을 다운로드 받습니다. <br/>
-   - https://drive.google.com/file/d/1vlqDX10oBkCo7c8XWoD1jj_4u-jj6C_g/view?usp=sharing
+   https://drive.google.com/file/d/1vlqDX10oBkCo7c8XWoD1jj_4u-jj6C_g/view?usp=sharing
 2. Figma 데스크탑 앱을 엽니다.
 3. Plugins > Development > Import plugin from manifest 선택합니다.
 4. 압축 해제한 폴더 안에 있는 manifest.json 파일을 선택합니다.
@@ -52,14 +52,14 @@
 이 플러그인을 직접 수정하거나 빌드하고 싶다면 아래 절차를 따르세요.
 
 **1. 패키지 설치**
-yarn install
+   - yarn install
 
 **2. 룰 수정하기 (src/rules.ts)**
-새로운 룰을 이곳에서 추가할 수 있습니다.
+   - 새로운 룰을 이곳에서 추가할 수 있습니다.
 
 **3. 빌드하기**
-수정한 내용을 반영하려면 다시 빌드해야 합니다. <br/>
-yarn build
+   - 수정한 내용을 반영하려면 다시 빌드해야 합니다. <br/>
+   - yarn build
 
 <br/>
 
